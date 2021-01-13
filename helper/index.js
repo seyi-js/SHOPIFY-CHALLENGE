@@ -1,7 +1,8 @@
 const crypto = require( 'crypto' )
 const jwt = require( 'jsonwebtoken' );
 const bcrypt = require( "bcryptjs" );
-let privateKey='245363465765ybhytniyuom78o78987cnddsfg576uyhvgtyt'
+let privateKey;
+( process.env.NODE_ENV !== 'production' ) ? privateKey = '245363465765ybhytniyuom78o78987cnddsfg576uyhvgtyt' : privateKey = process.env.privateKey;
 //@desc Genarate Json Web Tokens
 const generateJwtToken = ( id ) => {
     const token = jwt.sign(

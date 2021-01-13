@@ -12,9 +12,10 @@ mongoose.set( 'useCreateIndex', true );
 
 //DB Config
 
-let db='mongodb://localhost:27017/shopify'
+let db;
 
-
+//Switch Between DB's in Prod
+( process.env.NODE_ENV !== 'production' ) ? db = 'mongodb://localhost:27017/shopify' : db = process.env.MONGO_URL;
 
 let gfs = {};
 
@@ -229,18 +230,5 @@ var result = arr.map((i, idx)=>{
 } );
 
 
-// console.log(res)
-
-// let arr =[{"_id":"5ffdcfda925e461934a093f1","filename":"da1b648e7e0eecbe61c79ad790b256dc.png","content_type":"image/png","url":"http://localhost:5703/api/download/da1b648e7e0eecbe61c79ad790b256dc.png","upload_date":1610469339248},{"_id":"5ffdcfda925e461934a09413","filename":"b4922c7cb3abdfa4210fb62dcde272f2.png","content_type":"image/png","url":"http://localhost:5703/api/download/b4922c7cb3abdfa4210fb62dcde272f2.png","upload_date":1610469339250},{"_id":"5ffdcfda925e461934a09414","filename":"a33e232eab5f135088175e498a834265.jpg","content_type":"image/jpeg","url":"http://localhost:5703/api/download/a33e232eab5f135088175e498a834265.jpg","upload_date":1610469339251},{"_id":"5ffde33c16c76e359015e8ab","filename":"fec2b7fcaf333ef46b1a97a927929589.png","content_type":"image/png","url":"http://localhost:5703/api/download/fec2b7fcaf333ef46b1a97a927929589.png","upload_date":1610474301670},{"_id":"5ffde33d16c76e359015e8cd","filename":"2c12d7ed9adbd5358a8de807dd081f91.png","content_type":"image/png","url":"http://localhost:5703/api/download/2c12d7ed9adbd5358a8de807dd081f91.png","upload_date":1610474301672},{"_id":"5ffde33d16c76e359015e8ce","filename":"42e38ce227d535ed3842be2fa62b2b1b.jpg","content_type":"image/jpeg","url":"http://localhost:5703/api/download/42e38ce227d535ed3842be2fa62b2b1b.jpg","upload_date":1610474301673}];
-
-// // var arr= [{id:1, name: "foo"}, {id:2, name: "bar"}, {id:3, name:"not to be deleted"}];
-
-// var idsToDelete = ['5ffdcfda925e461934a093f1'];
-
-// var res = arr.map((i, idx)=>{
-//     return arr[idx] = idsToDelete.includes(i._id)? undefined : arr[idx]
-//  }).filter(i=>i)
- 
-//  console.log(typeof(arr[1]._id))
 
 module.exports = Router;

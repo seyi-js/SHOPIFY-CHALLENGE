@@ -6,8 +6,8 @@ const GridFsStorage = require( 'multer-gridfs-storage' );
 const multer = require( 'multer' );
 
 const crypto = require('crypto')
-let db='mongodb://localhost:27017/shopify'
-
+let db;
+( process.env.NODE_ENV !== 'production' ) ? db = 'mongodb://localhost:27017/shopify' : db = process.env.MONGO_URL;
 
 const storage = new GridFsStorage( {
     url: db,
