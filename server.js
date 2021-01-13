@@ -1,6 +1,6 @@
 const express = require( 'express' );
 const app = express();
-const PORT = 5703 || process.env.PORT;
+const PORT = process.env.PORT ||5703 ;
 const path = require( 'path' );
 const GridFsStorage = require( 'multer-gridfs-storage' );
 const multer = require( 'multer' );
