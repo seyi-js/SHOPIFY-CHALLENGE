@@ -41,6 +41,8 @@ app.use( express.json( { urlenncoded: true } ) );
 const apis = require( './routes/api/index' );
 
 app.use( '/api', apis );
-
+app.get('*', (req,res)=>{
+    res.send('hello world!')
+})
 app.listen( PORT, () => console.log( `Server started on Port ${ PORT }` ) );
 

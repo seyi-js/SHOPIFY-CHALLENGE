@@ -157,7 +157,7 @@ Router.post( '/upload', verifyToken, upload.array('file'),  async( req, res ) =>
 //@route GET api/download/:filename
 //@desc  view image
 //@access  Private
-Router.get( '/download/:filename', verifyToken, ( req, res ) => {
+Router.get( '/download/:filename',  ( req, res ) => {
     let { filename } = req.params;
     if ( !filename ) {
         res.json({message:'Invalid Request.',code:400})
